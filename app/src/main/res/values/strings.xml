@@ -8,4 +8,5 @@
 
     <!-- CREDITS -->
     <string name="icons_credit">Icon made by creaticca-creative-agency from www.flaticon.com</string>
+    <string name="log_in_password_or_login_wrong">Name or Password wrong. Password needs to be at least 6 characters</string>
 </resources>
