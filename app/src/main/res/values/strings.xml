@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyHome</string>
+    <string name="log_in_message">Enter Your Login Details</string>
+    <string name="log_in_button">LOG IN</string>
+    <string name="log_in_name">Name</string>
+    <string name="log_in_password">Password</string>
+
+
+    <!-- CREDITS -->
+    <string name="icons_credit">Icon made by creaticca-creative-agency from www.flaticon.com</string>
 </resources>
