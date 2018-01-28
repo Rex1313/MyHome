@@ -45,6 +45,7 @@
         android:layout_marginTop="24dp"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
+        android:hint="@string/log_in_password"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutLogin"
         app:layout_constraintStart_toStartOf="@+id/textInputLayoutLogin"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLogin">
@@ -54,8 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
-            android:text="@string/log_in_password" />
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
