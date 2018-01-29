@@ -1,5 +1,6 @@
 package sszymanski.co.uk.myhome.utils
 
+import android.content.SharedPreferences
 import android.view.View
 import android.widget.Toast
 
@@ -13,4 +14,8 @@ import android.widget.Toast
  */
 fun View.showToast(message:String, length:Int = Toast.LENGTH_SHORT){
     Toast.makeText(context, message, length).show();
+}
+
+fun SharedPreferences.save(key:String, value:Any){
+
 }
