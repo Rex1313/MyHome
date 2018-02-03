@@ -15,7 +15,12 @@ import android.widget.Toast
 fun View.showToast(message:String, length:Int = Toast.LENGTH_SHORT){
     Toast.makeText(context, message, length).show();
 }
-
+fun View.gone(){
+    this.visibility = View.GONE
+}
+fun View.visible(){
+    this.visibility = View.VISIBLE
+}
 fun SharedPreferences.save(key:String, value:Any){
 
 }
