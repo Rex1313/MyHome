@@ -3,7 +3,6 @@ package sszymanski.co.uk.myhome.login
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import sszymanski.co.uk.myhome.data.UserService
-import sszymanski.co.uk.myhome.data.pojo.LoginRequest
 import sszymanski.co.uk.myhome.di.DaggerDataComponent
 import sszymanski.co.uk.myhome.di.DataModule
 import sszymanski.co.uk.myhome.utils.Utils
@@ -24,7 +23,7 @@ class LoginPresenter(val view: LoginMvp.View) : LoginMvp.Presenter {
                 .inject(this)
     }
 
-    override fun toMd5(password: String): String = Utils.getMd5Hash(password).toString()
+    override fun toMd5(password: String): String = Utils.getMd5Hash(password).joinToString("")
 
 
     override fun validateCredentials(name: String, password: String) {
