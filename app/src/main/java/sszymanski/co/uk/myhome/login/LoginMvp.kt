@@ -1,5 +1,9 @@
 package sszymanski.co.uk.myhome.login
 
+import io.reactivex.Observable
+import sszymanski.co.uk.myhome.data.pojo.LoginResponse
+
+
 /**
  * Created by rex on 02/02/2018.
  */
@@ -14,7 +18,7 @@ interface LoginMvp {
     }
 
     interface Model{
-        fun validateCredentials(name : String, password: String)
+        fun validateCredentials(name : String, password: String): Observable<LoginResponse>
     }
     interface Presenter{
         fun onLoginSuccess()

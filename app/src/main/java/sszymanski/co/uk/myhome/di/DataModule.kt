@@ -8,6 +8,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import sszymanski.co.uk.myhome.data.UserRepository
 import sszymanski.co.uk.myhome.data.UserService
 import sszymanski.co.uk.myhome.utils.StaticValues
 import javax.inject.Singleton
@@ -24,7 +25,11 @@ class DataModule {
     fun provideUserService(retrofit: Retrofit): UserService {
         return retrofit.create(UserService::class.java)
     }
-
+    @Provides
+    @Singleton
+    fun provideUserRepository(userService: UserService) : UserRepository{
+        return UserRepository()
+    }
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
@@ -41,7 +46,7 @@ class DataModule {
                 .baseUrl(StaticValues.API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())// custom client
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 

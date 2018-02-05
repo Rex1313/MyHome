@@ -2,6 +2,7 @@ package sszymanski.co.uk.myhome.login
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import sszymanski.co.uk.myhome.data.UserRepository
 import sszymanski.co.uk.myhome.data.UserService
 import sszymanski.co.uk.myhome.di.DaggerDataComponent
 import sszymanski.co.uk.myhome.di.DataModule
@@ -13,7 +14,7 @@ import javax.inject.Inject
  */
 class LoginPresenter(val view: LoginMvp.View) : LoginMvp.Presenter {
     @Inject
-    lateinit var userService: UserService
+    lateinit var userRepository: UserRepository
 
     init {
         DaggerDataComponent
@@ -30,7 +31,7 @@ class LoginPresenter(val view: LoginMvp.View) : LoginMvp.Presenter {
         if (name.isNotEmpty() && password.length >= 6) {
             view.disableLoginButton()
             view.displayProgress()
-            userService.authorize(name, toMd5(password))
+            userRepository.validateCredentials(name, toMd5(password))
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnError({
                         view.hideProgress()

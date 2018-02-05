@@ -2,7 +2,7 @@ package sszymanski.co.uk.myhome.di
 
 import dagger.Component
 import sszymanski.co.uk.myhome.login.LoginPresenter
-import sszymanski.co.uk.myhome.login.UserRepository
+import sszymanski.co.uk.myhome.data.UserRepository
 import javax.inject.Singleton
 
 /**
