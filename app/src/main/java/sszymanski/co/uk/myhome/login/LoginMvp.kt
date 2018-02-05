@@ -15,6 +15,7 @@ interface LoginMvp {
         fun disableLoginButton()
         fun enableLoginButton()
         fun displayErrorMessage(errorMessage: String)
+        fun goToMainActivity()
     }
 
     interface Model{

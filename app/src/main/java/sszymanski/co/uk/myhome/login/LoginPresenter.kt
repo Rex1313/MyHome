@@ -41,6 +41,7 @@ class LoginPresenter(val view: LoginMvp.View) : LoginMvp.Presenter {
                     .subscribeOn(Schedulers.newThread()).subscribe(
                     {
                         println(it)
+                        onLoginSuccess()
                     }, Throwable::printStackTrace
             )
         } else {
@@ -48,9 +49,13 @@ class LoginPresenter(val view: LoginMvp.View) : LoginMvp.Presenter {
         }
     }
 
+    /**
+     * Login was sucessfull we will hide progress and go to main activity
+     */
     override fun onLoginSuccess() {
         view.enableLoginButton()
         view.hideProgress()
+        view.goToMainActivity()
     }
 
     override fun onLoginFailed() {
