@@ -16,15 +16,18 @@ interface LoginMvp {
         fun enableLoginButton()
         fun displayErrorMessage(errorMessage: String)
         fun goToMainActivity()
+        fun autoFillUsername(userName:String)
+        fun autoFillPassword(password: String)
     }
 
     interface Model{
         fun validateCredentials(name : String, password: String): Observable<LoginResponse>
     }
     interface Presenter{
+        fun initialize()
         fun onLoginSuccess()
         fun onLoginFailed()
-        fun validateCredentials(name: String, password: String)
+        fun loginButtonPressed(name: String, password: String)
         fun toMd5(password: String):String
     }
 }

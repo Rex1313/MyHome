@@ -1,51 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="400dp"
-    android:layout_height="400dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:elevation="@dimen/cardview_default_elevation"
+    android:layout_margin="@dimen/default_cardview_margin"
     app:cardCornerRadius="@dimen/cardview_default_radius">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
+
         >
+
+        <ImageView
+            android:id="@+id/bulb_icon"
+            android:layout_width="@dimen/light_icon_size"
+            android:layout_height="@dimen/light_icon_size"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/light_bulb"
+            app:layout_constraintBottom_toBottomOf="@+id/bright_seekbar"
+            app:layout_constraintEnd_toEndOf="@+id/bright_seekbar"
+            app:layout_constraintStart_toStartOf="@+id/bright_seekbar"
+            app:layout_constraintTop_toTopOf="@+id/bright_seekbar" />
+
+        <TextView
+            android:id="@+id/room_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/header_height"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Conservatory"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:elevation="2dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Light Status"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/bright_seekbar"
+            app:layout_constraintTop_toBottomOf="@+id/room_name" />
 
         <TextView
             android:id="@+id/brightness"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:textSize="20sp"
             android:text="Light Brightness"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bright_seekbar"
             app:layout_constraintTop_toBottomOf="@id/light" />
 
         <TextView
             android:id="@+id/hue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Light Hue"
+            app:layout_constraintStart_toEndOf="@+id/bright_seekbar"
+            app:layout_constraintTop_toBottomOf="@id/brightness" />
+
+        <com.jesusm.holocircleseekbar.lib.HoloCircleSeekBar
+            android:id="@+id/bright_seekbar"
+            android:layout_width="@dimen/seekbar_size"
+            android:layout_height="@dimen/seekbar_size"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:max="255"
+            app:pointer_color="@color/colorAccent"
+            app:pointer_halo_color="@color/colorPrimary"
+            app:pointer_size="@dimen/pointer_size"
+            app:wheel_active_color="@color/colorAccent"
+            app:wheel_unactive_color="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/room_name"
+
+            />
+
+        <TextView
+            android:id="@+id/temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:textSize="20sp"
-            android:text="Light Hue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/brightness" />
-</android.support.constraint.ConstraintLayout>
+            android:text="N/A"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/brightness"
+            app:layout_constraintTop_toBottomOf="@+id/room_name" />
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

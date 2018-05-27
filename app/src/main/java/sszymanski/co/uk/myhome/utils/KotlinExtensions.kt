@@ -21,6 +21,6 @@ fun View.gone(){
 fun View.visible(){
     this.visibility = View.VISIBLE
 }
-fun SharedPreferences.save(key:String, value:Any){
-
+fun SharedPreferences.saveString(key:String, value:String){
+        this.edit().putString(key, value).commit()
 }

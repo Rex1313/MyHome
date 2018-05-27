@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="login_logo_size">160dp</dimen>
+    <dimen name="header_height">48dp</dimen>
+    <dimen name="default_cardview_margin">8dp</dimen>
+
+
+    <!-- main card dimensions -->
+    <dimen name="light_icon_size">60dp</dimen>
+    <dimen name="seekbar_size">120dp</dimen>
+    <dimen name="pointer_size">8dp</dimen>
 </resources>

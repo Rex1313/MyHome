@@ -1,6 +1,5 @@
 package sszymanski.co.uk.myhome.di
 
-import android.app.Application
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -10,8 +9,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import sszymanski.co.uk.myhome.data.PhilipsHueRepository
 import sszymanski.co.uk.myhome.data.PhilipsHueService
-import sszymanski.co.uk.myhome.data.UserRepository
-import sszymanski.co.uk.myhome.data.UserService
 import sszymanski.co.uk.myhome.utils.StaticValues
 import javax.inject.Singleton
 

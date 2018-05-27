@@ -1,7 +1,7 @@
 package sszymanski.co.uk.myhome.data
 
 import android.content.Context
-import sszymanski.co.uk.myhome.utils.save
+import sszymanski.co.uk.myhome.utils.saveString
 
 /**
  * Created by rex on 28/01/2018.
@@ -17,8 +17,8 @@ class UserPreferences(val context: Context) {
      */
     fun saveLoginDetails(nameAndPassword: Pair<String, String>) {
         val sharedPreferences = context.getSharedPreferences(USER_SHARED_PREFERNCES, Context.MODE_PRIVATE)
-        sharedPreferences.save(USER_LOGIN, nameAndPassword.first)
-        sharedPreferences.save(USER_PASSWORD, nameAndPassword.second)
+        sharedPreferences.saveString(USER_LOGIN, nameAndPassword.first)
+        sharedPreferences.saveString(USER_PASSWORD, nameAndPassword.second)
     }
 
     /**

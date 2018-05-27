@@ -2,6 +2,7 @@ package sszymanski.co.uk.myhome.data
 
 import io.reactivex.Observable
 import sszymanski.co.uk.myhome.data.pojo.PhilipsLight
+import sszymanski.co.uk.myhome.data.pojo.PhilipsTempSensor
 import sszymanski.co.uk.myhome.di.DaggerPhilipsComponent
 import sszymanski.co.uk.myhome.di.PhilipsModule
 import javax.inject.Inject
@@ -16,5 +17,8 @@ class PhilipsHueRepository{
     }
     fun getLight(light:String): Observable<PhilipsLight> {
         return philipsHueService.getLight(light)
+    }
+    fun getTempSensor(sensor:String): Observable<PhilipsTempSensor>{
+        return philipsHueService.getTemperatureSensor(sensor)
     }
 }

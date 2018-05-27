@@ -5,14 +5,24 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_login.*
 import sszymanski.co.uk.myhome.R
+import sszymanski.co.uk.myhome.data.UserPreferences
 import sszymanski.co.uk.myhome.main.MainActivity
 import sszymanski.co.uk.myhome.utils.gone
 import sszymanski.co.uk.myhome.utils.visible
 
 class LoginActivity : AppCompatActivity(), LoginMvp.View {
+
     lateinit var loginPresenter: LoginMvp.Presenter
+    override fun autoFillUsername(userName: String) {
+        editTextLogin.setText(userName)
+    }
+
+    override fun autoFillPassword(password: String) {
+        editTextPassword.setText(password)
+    }
+
     override fun goToMainActivity() {
-        val intent  = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
@@ -39,11 +49,13 @@ class LoginActivity : AppCompatActivity(), LoginMvp.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        loginPresenter = LoginPresenter(this);
+        val userPreferences = UserPreferences(this)
+        loginPresenter = LoginPresenter(this, userPreferences)
+        loginPresenter.initialize()
         buttonLogIn.setOnClickListener({
             val login = editTextLogin.text.toString()
             val password = editTextPassword.text.toString()
-            loginPresenter.validateCredentials(login, password)
+            loginPresenter.loginButtonPressed(login, password)
 
         })
     }

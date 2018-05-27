@@ -2,8 +2,8 @@ package sszymanski.co.uk.myhome.login
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import sszymanski.co.uk.myhome.data.UserPreferences
 import sszymanski.co.uk.myhome.data.UserRepository
-import sszymanski.co.uk.myhome.data.UserService
 import sszymanski.co.uk.myhome.di.DaggerDataComponent
 import sszymanski.co.uk.myhome.di.DataModule
 import sszymanski.co.uk.myhome.utils.Utils
@@ -12,11 +12,14 @@ import javax.inject.Inject
 /**
  * Created by rex on 02/02/2018.
  */
-class LoginPresenter(val view: LoginMvp.View) : LoginMvp.Presenter {
+class LoginPresenter(val view: LoginMvp.View,val userPreferences: UserPreferences) : LoginMvp.Presenter {
+
+
     @Inject
     lateinit var userRepository: UserRepository
 
     init {
+
         DaggerDataComponent
                 .builder()
                 .dataModule(DataModule())
@@ -24,11 +27,16 @@ class LoginPresenter(val view: LoginMvp.View) : LoginMvp.Presenter {
                 .inject(this)
     }
 
+    override fun initialize() {
+        view.autoFillUsername(userPreferences.loadLoginDetails().first)
+        view.autoFillPassword(userPreferences.loadLoginDetails().second)
+    }
     override fun toMd5(password: String): String = Utils.getMd5Hash(password).joinToString("")
 
 
-    override fun validateCredentials(name: String, password: String) {
+    override fun loginButtonPressed(name: String, password: String) {
         if (name.isNotEmpty() && password.length >= 6) {
+            userPreferences.saveLoginDetails(Pair(name, password))
             view.disableLoginButton()
             view.displayProgress()
             userRepository.validateCredentials(name, toMd5(password))

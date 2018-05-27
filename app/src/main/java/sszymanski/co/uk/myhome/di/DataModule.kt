@@ -1,6 +1,5 @@
 package sszymanski.co.uk.myhome.di
 
-import android.app.Application
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -17,7 +16,7 @@ import javax.inject.Singleton
  * Created by rex on 03/02/2018.
  */
 @Module
-class DataModule {
+class DataModule() {
 
 
     @Provides
@@ -25,23 +24,26 @@ class DataModule {
     fun provideUserService(retrofit: Retrofit): UserService {
         return retrofit.create(UserService::class.java)
     }
+
     @Provides
     @Singleton
-    fun provideUserRepository(userService: UserService) : UserRepository{
+    fun provideUserRepository(userService: UserService): UserRepository {
         return UserRepository()
     }
+
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient()
     }
-    @Provides
-    @Singleton
-    fun provideGson():Gson = Gson()
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient,gson:Gson): Retrofit {
+    fun provideGson(): Gson = Gson()
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(StaticValues.API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))

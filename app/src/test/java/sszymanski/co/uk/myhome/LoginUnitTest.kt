@@ -11,11 +11,9 @@ import sszymanski.co.uk.myhome.login.LoginPresenter
  * Created by rex on 04/02/2018.
  */
 class LoginUnitTest {
-    lateinit var mockedView:LoginActivity
     lateinit var presenter: LoginMvp.Presenter;
     @Before
     fun initialize() {
-        mockedView = mock(LoginActivity::class.java)
         presenter = LoginPresenter(mockedView)
     }
 
