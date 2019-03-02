@@ -9,8 +9,10 @@ import sszymanski.co.uk.myhome.data.pojo.Room
 interface MainMvp {
     interface View{
         fun setListInRecyclerView(rooms:ArrayList<Room>)
+        fun playSound(id:Int)
     }
     interface Presenter{
         fun loadRooms()
+        fun loadHallowen()
     }
 }

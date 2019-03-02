@@ -15,7 +15,8 @@ import sszymanski.co.uk.myhome.utils.IconUtils
  * Created by rex on 05/02/2018.
  */
 class MainRecyclerViewAdapter(val context: Context, val rooms: ArrayList<Room>) : RecyclerView.Adapter<MainRecyclerViewAdapter.MainViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MainViewHolder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.card_main_adapter, parent, false)
         val holder = MainViewHolder(view)
         val presenter = RoomPresenter(holder)
@@ -27,11 +28,11 @@ class MainRecyclerViewAdapter(val context: Context, val rooms: ArrayList<Room>) 
         return rooms.size
     }
 
-    override fun onBindViewHolder(holder: MainViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val presenter = holder?.itemView?.getTag() as RoomPresenter
-        presenter.initRoom(rooms[position]);
-        presenter.getLightStatus(rooms[position].lightNo)
-        presenter.getTemperature(rooms[position].tempNo)
+//        presenter.initRoom(rooms[position]);
+//        presenter.getLightStatus(rooms[position].lightNo)
+//        presenter.getTemperature(rooms[position].tempNo)
 
     }
 

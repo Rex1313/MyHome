@@ -15,5 +15,6 @@ import javax.inject.Singleton
 interface PhilipsComponent {
     fun inject(roomPresenter: RoomPresenter)
     fun inject(philipsHueRepository: PhilipsHueRepository)
+    fun inject(mainPresenter: MainPresenter)
 
 }

@@ -35,26 +35,27 @@ class LoginPresenter(val view: LoginMvp.View,val userPreferences: UserPreference
 
 
     override fun loginButtonPressed(name: String, password: String) {
-        if (name.isNotEmpty() && password.length >= 6) {
-            userPreferences.saveLoginDetails(Pair(name, password))
-            view.disableLoginButton()
-            view.displayProgress()
-            userRepository.validateCredentials(name, toMd5(password))
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnError({
-                        view.hideProgress()
-                        view.enableLoginButton()
-                        view.displayErrorMessage("name or password incorrect")
-                    })
-                    .subscribeOn(Schedulers.newThread()).subscribe(
-                    {
-                        println(it)
-                        onLoginSuccess()
-                    }, Throwable::printStackTrace
-            )
-        } else {
-            view.displayErrorMessage("Name can't be empty and password needs to be more than 6 characters")
-        }
+//        if (name.isNotEmpty() && password.length >= 6) {
+//            userPreferences.saveLoginDetails(Pair(name, password))
+//            view.disableLoginButton()
+//            view.displayProgress()
+//            userRepository.validateCredentials(name, toMd5(password))
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .doOnError({
+//                        view.hideProgress()
+//                        view.enableLoginButton()
+//                        view.displayErrorMessage("name or password incorrect")
+//                    })
+//                    .subscribeOn(Schedulers.newThread()).subscribe(
+//                    {
+//                        println(it)
+//                        onLoginSuccess()
+//                    }, Throwable::printStackTrace
+//            )
+//        } else {
+//            view.displayErrorMessage("Name can't be empty and password needs to be more than 6 characters")
+//        }
+        onLoginSuccess()
     }
 
     /**
